@@ -51,10 +51,9 @@ if __name__ == "__main__":
     values = {}
 
     while True:
-        data = [] # list(ord(e) for e in fp.read(8))
-        for e in fp.read(8):
-            print(e, chr(e), ord(chr(e)))
-            data.append(ord(chr(e)))
+        #data = [] # list(ord(e) for e in fp.read(8))
+        chunk = fp.read(8)
+        data = list(chunk)
 
         decrypted = decrypt(key, data)
         if decrypted[4] != 0x0d or (sum(decrypted[:3]) & 0xff) != decrypted[3]:
