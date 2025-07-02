@@ -3,7 +3,7 @@
 A live-feed of me dying in my apartment from heat.  
 https://watchmemelt.bisonopolis.de/  
 
-Original source for reading the `CO2-Monitor AIRCO2NTROL MINI` device: https://hackaday.io/project/5301/logs?sort=oldest  
+Original source for reading the `CO2-Monitor AIRCO2NTROL MINI 31.5006` device: https://hackaday.io/project/5301/logs?sort=oldest  
 
 ## Note
 
@@ -15,7 +15,7 @@ I kept the python3 translation of the original code and some simple scripts here
 * A webserver with PHP
 * A URL / subdomain
 
-The `CO2-Monitor AIRCO2NTROL MINI | TFA Dostmann`
+The `CO2-Monitor AIRCO2NTROL MINI 31.5006 | TFA Dostmann`
 * https://www.tfa-dostmann.de/produkt/co2-monitor-airco2ntrol-mini-31-5006/
 * Amazon Affiliate Link: https://amzn.to/44zvPGj
   * As an Amazon Associate I earn from qualifying purchases. 
