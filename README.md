@@ -32,9 +32,9 @@ This may differ from system to system, but what worked for me (Ubuntu 24.04):
 * plugin the `CO2-Monitor AIRCO2NTROL MINI`
 * run `ll -l /dev/hidraw*` again
 * the now highest number of `hidraw` devices is the CO2-Monitor
-* run `sudo chmod o+rw /dev/hidrawNIMBER` for your device (replace NUMBER with the number you observed before)
+* run `sudo chmod o+rw /dev/hidrawNUMBER` for your device (replace NUMBER with the number you observed before)
 
-Note: `sudo chmod o+rw /dev/hidrawNIMBER` has to be run after every reboot, there are multiple ways to make it permanent, one is at the bottom of the original post https://hackaday.io/project/5301/logs?sort=oldest.  
+Note: `sudo chmod o+rw /dev/hidrawNUMBER` has to be run after every reboot, there are multiple ways to make it permanent, one is at the bottom of the original post https://hackaday.io/project/5301/logs?sort=oldest.  
 
 
 ### Config
