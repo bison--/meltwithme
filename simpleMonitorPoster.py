@@ -5,6 +5,7 @@ import fcntl
 import csv
 import datetime
 import os
+import time
 import config_loader as config
 from inc.DataPoster import DataPoster
 
@@ -85,6 +86,10 @@ def main():
         current_temp = -1
 
         while True:
+            #time.sleep(1)
+
+            measure_date = datetime.datetime.now()
+
             chunk = fp.read(8)
             if not chunk or len(chunk) < 8:
                 # EOF or short read; exit cleanly
@@ -108,7 +113,9 @@ def main():
             for k in sorted(values):
                 mark = "*" if k == op else " "
                 parts.append(f"{mark}{k:02X}:{values[k]:04X} {values[k]:5d}")
-            print(", ".join(parts), end="   ")
+            #print(", ".join(parts), end="   ")
+
+            print(measure_date, end="   ")
 
             # From http://co2meters.com/Documentation/AppNotes/AN146-RAD-0401-serial-communication.pdf
             if 0x50 in values:
@@ -133,7 +140,7 @@ def main():
 
             last_co2 = current_co2
             last_temp = current_temp
-            measure_date = datetime.datetime.now()
+
             csv_writer.writerow([
                 measure_date,
                 current_co2,
@@ -146,6 +153,7 @@ def main():
                 'co2': current_co2,
                 'temperature': current_temp,
             })
+
 
 
 if __name__ == "__main__":
