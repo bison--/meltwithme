@@ -45,6 +45,8 @@ The `CO2-Monitor AIRCO2NTROL MINI 31.5006 | TFA Dostmann`
 
 ### CO2-Monitor
 
+**Note:** Not setting the `DEVICE_PATH` in `conf_local.py` will result in auto-detecting the device path, which still needs the `rw` (read/write) rights to be set, but it will show you the path if it can be detected, making the manual guesswork superfluous.   
+
 This may differ from system to system, but what worked for me (Ubuntu 24.04):  
 
 * run `ll -l /dev/hidraw*`
@@ -55,7 +57,7 @@ This may differ from system to system, but what worked for me (Ubuntu 24.04):
 * the now highest number of `hidraw` devices is the CO2-Monitor
 * run `sudo chmod o+rw /dev/hidrawNUMBER` for your device (replace NUMBER with the number you observed before)
 
-Note: `sudo chmod o+rw /dev/hidrawNUMBER` has to be run after every reboot, there are multiple ways to make it permanent, one is at the bottom of the original post https://hackaday.io/project/5301/logs?sort=oldest.  
+**Note:** `sudo chmod o+rw /dev/hidrawNUMBER` has to be run after every reboot, there are multiple ways to make it permanent, one is at the bottom of the original post https://hackaday.io/project/5301/logs?sort=oldest.  
 
 
 ### Config
@@ -71,4 +73,4 @@ Copy `web/conf.php` to `web/conf_local.php` and fill out the variables.
 Copy the `web` folder to your server.    
 It has to be reachable from a root-path, eg: https://watchmemelt.bisonopolis.de/  
 
-Run `simpleMonitorPoster.py`.  
+Run `monitorPoster.py`.  
