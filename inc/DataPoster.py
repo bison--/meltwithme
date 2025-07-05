@@ -9,7 +9,6 @@ class DataPoster:
         pass
 
     def post(self, data):
-        #newConditions = {"con1": 40, "con2": 20, "con3": 99, "con4": 40, "password": "1234"}
         params_json = json.dumps(data).encode('utf8')
         params = urllib.parse.urlencode({"payload": params_json}).encode('utf-8')
         req = urllib.request.Request(

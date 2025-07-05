@@ -21,8 +21,8 @@ class DetectPath:
 
     def detect_path(self):
         """
-        Scans /dev for hidraw devices, queries udevadm for each one, and
-        returns the first path whose ID_MODEL_FROM_DATABASE matches.
+        Scans /dev for self.device_prefix (hidraw) devices, queries udevadm for each one, and
+        returns the first path whose ID_MODEL_FROM_DATABASE matches self.device_name.
         """
 
         # reset path
@@ -45,12 +45,13 @@ class DetectPath:
                 continue
 
             for line in output.splitlines():
-                # look for the model field
-                if line.startswith('ID_MODEL_FROM_DATABASE='):
-                    model = line.partition('=')[2]
-                    if model == self.device_name:
-                        self.detected_path = device_node
-                        return device_node
+                if not line.startswith('ID_MODEL_FROM_DATABASE='):
+                    continue
+
+                model = line.partition('=')[2]
+                if model == self.device_name:
+                    self.detected_path = device_node
+                    return device_node
 
         # if we get here, nothing matched
         return ""
