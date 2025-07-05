@@ -8,6 +8,7 @@ import os
 import time
 import config_loader as config
 from inc.DataPoster import DataPoster
+from inc.DetectPath import DetectPath
 
 
 def decrypt(key: list[int], data: list[int]) -> list[int]:
@@ -43,9 +44,16 @@ def main():
     #if len(sys.argv) != 2:
     #    print(f"Usage: {sys.argv[0]} <device>", file=sys.stderr)
     #    sys.exit(1)
-    device_path = '/dev/hidraw22'
+    device_path = config.DEVICE_PATH
     if len(sys.argv) >= 2:
         device_path = sys.argv[1]
+
+    path_detector = DetectPath()
+    path_detector.detected_path = device_path
+    if path_detector.need_detection():
+        print("No device path present, detecting path")
+        device_path = path_detector.detect_path()
+        print("Detected device path: '{}'".format(device_path))
 
     # Key retrieved from /dev/random, guaranteed to be random ;)
     key = [0xC4, 0xC6, 0xC0, 0x92, 0x40, 0x23, 0xDC, 0x96]
@@ -148,6 +156,7 @@ def main():
             ])
             csv_file.flush()
 
+            print("Posting Data")
             data_poster.post({
                 'date': measure_date.strftime("%Y-%m-%d %H:%M:%S"),
                 'co2': current_co2,

@@ -9,6 +9,27 @@ Original source for reading the `CO2-Monitor AIRCO2NTROL MINI 31.5006` device: h
 
 I kept the python3 translation of the original code and some simple scripts here for reference for myself and anyone who would wants to build something with this and getting an easy and modifiable starting point.   
 
+### Device Infos
+
+`usb-devices | grep -B4 -A4 USB-zyTemp`
+```
+P:  Vendor=04d9 ProdID=a052 Rev=01.00
+S:  Manufacturer=Holtek
+S:  Product=USB-zyTemp
+```
+
+`udevadm info --query=property --name=/dev/hidraw4`  
+``` 
+DEVPATH=/devices/pci0000:00/0000:00:08.1/0000:c5:00.3/usb1/1-2/1-2.1/1-2.1:1.0/>
+DEVNAME=/dev/hidraw4
+MAJOR=241
+MINOR=4
+SUBSYSTEM=hidraw
+USEC_INITIALIZED=1733790499
+ID_VENDOR_FROM_DATABASE=Holtek Semiconductor, Inc.
+ID_MODEL_FROM_DATABASE=USB-zyTemp
+```
+
 ## Requirements
 
 * Any Linux computer with python3
