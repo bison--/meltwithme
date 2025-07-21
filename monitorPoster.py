@@ -4,6 +4,7 @@ import sys
 import fcntl
 import datetime
 import config_loader as config
+import time
 from inc.DataPoster import DataPoster
 from inc.DetectPath import DetectPath
 from inc.RecordLogger import RecordLogger
@@ -140,4 +141,12 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    keep_running = True
+    while keep_running:
+        try:
+            main()
+        except KeyboardInterrupt:
+            keep_running = False
+        except Exception as ex:
+            print(ex)
+            time.sleep(1)
